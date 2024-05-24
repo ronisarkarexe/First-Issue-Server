@@ -6,3 +6,46 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model GetRepositorie {
+  id          String      @id @default(uuid())
+  title       String
+  repoUrl     String
+  description String
+  liveUrl     String
+  techStack   TechStack[]
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+
+  @@map("get_repositorie")
+}
+
+enum TechStack {
+  HTML
+  CSS
+  JAVASCRIPT
+  TYPESCRIPT
+  REACT
+  ANGULAR
+  VUE
+  NODEJS
+  EXPRESS
+  MONGODB
+  SQL
+  GRAPHQL
+  WEBPACK
+  BABEL
+  SASS
+  LESS
+  BOOTSTRAP
+  TAILWIND_CSS
+  REDUX
+  NEXT_JS
+  NESTJS
+  SOCKET_IO
+  JWT
+  PASSPORT
+  AWS
+  AZURE
+  GOOGLE_CLOUD
+}
