@@ -6,7 +6,8 @@
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node dist/server.js",
-    "build": "tsc"
+    "postinstall": "prisma generate",
+    "build": "prisma generate && next build && tsc"
   },
   "keywords": [],
   "author": "Roni Sarkar",
