@@ -8,21 +8,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RepositoryServer = void 0;
-const prisma_1 = __importDefault(require("../../../lib/prisma"));
-const createRepository = (payload) => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_1.default.repository.create({ data: payload });
-    return result;
+const catchAsync = (fn) => (req, res, next) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        yield fn(req, res, next);
+    }
+    catch (error) {
+        next(error);
+    }
 });
-const getRepositories = () => __awaiter(void 0, void 0, void 0, function* () {
-    const result = yield prisma_1.default.repository.findMany({});
-    return result;
-});
-exports.RepositoryServer = {
-    createRepository,
-    getRepositories,
-};
+exports.default = catchAsync;

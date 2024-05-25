@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.RepositoryRouters = void 0;
 const express_1 = __importDefault(require("express"));
+const repository_controller_1 = require("./repository.controller");
 const router = express_1.default.Router();
-router.get("/", (req, res) => {
-    res.send("Welcome Repository");
-});
+router.get("/", repository_controller_1.RepositoryController.getRepositories);
+router.post("/", repository_controller_1.RepositoryController.createRepository);
 exports.RepositoryRouters = router;
