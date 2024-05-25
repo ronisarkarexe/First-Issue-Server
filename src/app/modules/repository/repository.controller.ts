@@ -26,7 +26,19 @@ const getRepositories = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const getRepository = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const result = await RepositoryServer.getRepository(id);
+  sendResponse<Repository>(res, {
+    statusCode: httpStatus.OK,
+    message: "OK!",
+    success: true,
+    data: result,
+  });
+});
+
 export const RepositoryController = {
   createRepository,
   getRepositories,
+  getRepository
 };

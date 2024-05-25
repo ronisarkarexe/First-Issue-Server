@@ -11,7 +11,13 @@ const getRepositories = async (): Promise<Repository[]> => {
   return result;
 };
 
+const getRepository = async (id: string) => {
+  const result = await prisma.repository.findUnique({ where: { id: id } });
+  return result;
+};
+
 export const RepositoryServer = {
   createRepository,
   getRepositories,
+  getRepository,
 };
