@@ -16,8 +16,13 @@ const getRepository = async (id: string) => {
   return result;
 };
 
+const deleteRepository = async (id: string) => {
+  await prisma.repository.delete({ where: { id: id } });
+};
+
 export const RepositoryServer = {
   createRepository,
   getRepositories,
   getRepository,
+  deleteRepository,
 };
