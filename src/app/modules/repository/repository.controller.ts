@@ -39,7 +39,7 @@ const getRepository = catchAsync(async (req: Request, res: Response) => {
 
 const deleteRepository = catchAsync(async (req: Request, res: Response) => {
   const id = req.params.id;
-  await RepositoryServer.getRepository(id);
+  await RepositoryServer.deleteRepository(id);
   sendResponse<Repository>(res, {
     statusCode: httpStatus.OK,
     message: "Repository deleted successfully",
