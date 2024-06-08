@@ -48,4 +48,5 @@ enum TechStack {
   AWS
   AZURE
   GOOGLE_CLOUD
+  PRISMA
 }
