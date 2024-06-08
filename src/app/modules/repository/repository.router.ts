@@ -6,6 +6,6 @@ const router = express.Router();
 router.get("/", RepositoryController.getRepositories);
 router.get("/:id", RepositoryController.getRepository);
 router.post("/", RepositoryController.createRepository);
-router.delete("/", RepositoryController.deleteRepository);
+router.delete("/:id", RepositoryController.deleteRepository);
 
 export const RepositoryRouters = router;
