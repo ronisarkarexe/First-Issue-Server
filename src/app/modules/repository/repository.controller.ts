@@ -47,9 +47,22 @@ const deleteRepository = catchAsync(async (req: Request, res: Response) => {
   });
 });
 
+const updateRepository = catchAsync(async (req: Request, res: Response) => {
+  const id = req.params.id;
+  const body = req.body;
+  const result = await RepositoryServer.updateRepository(id, body);
+  sendResponse<Repository>(res, {
+    statusCode: httpStatus.OK,
+    message: "Repository updated successfully",
+    success: true,
+    data: result,
+  });
+});
+
 export const RepositoryController = {
   createRepository,
   getRepositories,
   getRepository,
   deleteRepository,
+  updateRepository,
 };

@@ -12,12 +12,20 @@ const getRepositories = async (): Promise<Repository[]> => {
 };
 
 const getRepository = async (id: string) => {
-  const result = await prisma.repository.findUnique({ where: { id: id } });
+  const result = await prisma.repository.findUnique({ where: { id } });
   return result;
 };
 
 const deleteRepository = async (id: string) => {
-  await prisma.repository.delete({ where: { id: id } });
+  await prisma.repository.delete({ where: { id } });
+};
+
+const updateRepository = async (id: string, payload: Repository) => {
+  const result = await prisma.repository.update({
+    where: { id },
+    data: payload,
+  });
+  return result;
 };
 
 export const RepositoryServer = {
@@ -25,4 +33,5 @@ export const RepositoryServer = {
   getRepositories,
   getRepository,
   deleteRepository,
+  updateRepository,
 };
